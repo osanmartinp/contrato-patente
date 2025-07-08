@@ -124,10 +124,10 @@ paths:
                         type: string
                         nullable: true
                         example: "Octubre"
-        '401':
-          description: No autorizado - Clave de API inválida o faltante.
         '404':
           description: Vehículo no encontrado.
+        '429':
+          description: Rate limit exceeded (minute or daily).
         '500':
           description: Error interno del servidor.
 components:
