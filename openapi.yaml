@@ -1,0 +1,138 @@
+openapi: 3.0.0
+paths:
+  /v1/vehicles/plate/{plate}:
+    post:
+      summary: Obtiene información de un vehículo por su placa.
+      operationId: getVehicleByPlate
+      parameters:
+        - in: path
+          name: plate
+          required: true
+          schema:
+            type: string
+            example: BTV037
+          description: Número de placa del vehículo.
+      security:
+        - ApiKeyAuth: []
+      responses:
+        '200':
+          description: Información del vehículo obtenida exitosamente.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  status:
+                    type: integer
+                    example: 200
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        nullable: true
+                        example: "1454123"
+                      licensePlate:
+                        type: string
+                        example: "BTV037"
+                      dvLicensePlate:
+                        type: string
+                        nullable: true
+                        example: null
+                      modelId:
+                        type: string
+                        nullable: true
+                        example: "38176"
+                      version:
+                        type: string
+                        nullable: true
+                        example: null
+                      mileage:
+                        type: string
+                        nullable: true
+                        example: null
+                      color:
+                        type: string
+                        nullable: true
+                        example: null
+                      year:
+                        type: integer
+                        nullable: true
+                        example: 2015
+                      codeSii:
+                        type: string
+                        nullable: true
+                        example: null
+                      vinNumber:
+                        type: string
+                        nullable: true
+                        example: "LTMKD0790F5109415"
+                      engineNumber:
+                        type: string
+                        nullable: true
+                        example: "KD07E2013888"
+                      engine:
+                        type: string
+                        nullable: true
+                        example: null
+                      fuel:
+                        type: string
+                        nullable: true
+                        example: "BENCINA"
+                      transmission:
+                        type: string
+                        nullable: true
+                        example: null
+                      doors:
+                        type: string
+                        nullable: true
+                        example: null
+                      model:
+                        type: object
+                        properties:
+                          id:
+                            type: string
+                            nullable: true
+                            example: "38176"
+                          name:
+                            type: string
+                            nullable: true
+                            example: "XR150L"
+                          urlImage:
+                            type: string
+                            nullable: true
+                            example: null
+                          typeVehicle:
+                            type: object
+                            properties:
+                              name:
+                                type: string
+                                nullable: true
+                                example: "MOTOCICLETA"
+                        nullable: true
+                      brand:
+                        type: object
+                        properties:
+                          name:
+                            type: string
+                            nullable: true
+                            example: "HONDA"
+                      monthRT:
+                        type: string
+                        nullable: true
+                        example: "Octubre"
+        '401':
+          description: No autorizado - Clave de API inválida o faltante.
+        '404':
+          description: Vehículo no encontrado.
+        '500':
+          description: Error interno del servidor.
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-Api-Key
