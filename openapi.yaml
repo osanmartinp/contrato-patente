@@ -1,7 +1,7 @@
 openapi: 3.0.0
 paths:
   /v1/vehicles/plate/{plate}:
-    post:
+    get:
       summary: Obtiene información de un vehículo por su placa.
       operationId: getVehicleByPlate
       parameters:
